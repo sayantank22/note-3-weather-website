@@ -1,4 +1,4 @@
-console.log('Client side javascript file is loaded!')
+// console.log('Client side javascript file is loaded!')
 
 // Here we are using 'then' method on the return value from the fetch and we provide to it the callback function we wanna run and we get access to the response as
 // the first and only arg up above and then inside that we can use the response to do whatever we want to do like exract the data and render it 
