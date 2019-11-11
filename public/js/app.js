@@ -52,7 +52,10 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent ='Loading...'
     messageTwo.textContent = ''
 
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    // The problem with this line is when the url below runs on heroku it's still gonna access localhost which is not gonna exist which will pervent us from fetching the weather 
+    // fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    // To adrress this we wanna remove the domain completely that means if we are on localhost we would want to make the request to localhost or if we're on our heroku app url we wanna make the request to that url similar to what we did with header.hbs(/the thing we wanna visit) 
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if(data.error){
                // return console.log(data.error)

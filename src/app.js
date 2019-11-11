@@ -13,6 +13,10 @@ const viewsPath = path.join(__dirname, '../templates/views')   // originally exp
 const partialsPath  =path.join(__dirname, '../templates/partials')
 
 const app = express()   // does'nt take in any args instead we configure our server by using various application methods provided on the application itself
+// We are going to extract the value that heroku provides by running process.env[which is an object where we can access environment variables].PORT returns an environment variable value 
+// so this basically means port equals process.env.PORT value if it exists or a default fallback like 3000 if the first one doen't exist.
+// So on heroku the first arg will exist and it will be used but locally this won't exist and the the second arg will be used meaning our app will work just fine locally
+const port = process.env.PORT || 300
 
 // Setup handlebars engine and views location
 app.set('view engine' ,'hbs')   // settiing up the handlebars for dynamic content
@@ -200,8 +204,13 @@ app.get('*', (req, res) => {    // with the * the wild card character we're sayi
 // this is not the default port. When we visit the website we don't provide the port cause there are default ports for exmaple for like an http based website it is port 80 which we will learn later how to use those ports
 // for now inour local development environment as we're viewing on our local machine port 3000 will do just fine
 // another optional arg we can pass to this listen method is a callback function which runs when the server is up and  running
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')    // this message is never gonna display to someone in the browser, for that message on line no. 20 is for, this is just gonna display as an useful piece of info  when runnig the app
-})
+// app.listen(3000, () => {
+//     console.log('Server is up on port 3000')    // this message is never gonna display to someone in the browser, for that message on line no. 20 is for, this is just gonna display as an useful piece of info  when runnig the app
+// })
 
 // when we visited that url in the browser it went off to our server.The Express server found the matching route for the root and it processed the request using our handler which in turn using the res.send() send back a text response which is printed inside the browser
+
+// We are going to use the value of the port variable on line no. 19 -> instead nof using the value 3000 we're gonna pass in the value stored in port variable
+app.listen(port, () => {    // replace 3000 with port
+    console.log('Server is up on port ' + port) // same instead of staticly typing out 3000 we'll concatenate whatever value is stored in port 
+})
