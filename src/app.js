@@ -16,7 +16,7 @@ const app = express()   // does'nt take in any args instead we configure our ser
 // We are going to extract the value that heroku provides by running process.env[which is an object where we can access environment variables].PORT returns an environment variable value 
 // so this basically means port equals process.env.PORT value if it exists or a default fallback like 3000 if the first one doen't exist.
 // So on heroku the first arg will exist and it will be used but locally this won't exist and the the second arg will be used meaning our app will work just fine locally
-const port = process.env.PORT || 300
+const port = process.env.PORT || 3000
 
 // Setup handlebars engine and views location
 app.set('view engine' ,'hbs')   // settiing up the handlebars for dynamic content
