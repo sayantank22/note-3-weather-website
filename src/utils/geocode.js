@@ -19,7 +19,7 @@ const request = require('request')
 // }
 
 const geocode = (address, callback) => {
-    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) + '.json?access_token=pk.eyJ1Ijoic2F5YW50YW5rMjIiLCJhIjoiY2syNHJjNWpoMml2eTNocGlwdmxmdTFqcyJ9.TQuPD-UgavjhS_SeEdUtSA&limit=1'
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) + '.json?access_token=pk.eyJ1Ijoic2F5YW50YW5rMjIiLCJhIjoiY2s5ZWoxc2F0MDJhNDNtdGJqdmdzYmN4cSJ9.xICKivbxTOfggB9Q1nPkHA&limit=1'
     
     // since the name of the object property(url) and name of the variable(url) is same we can use the es-6 shorthand syntax
     request({ url, json: true }, (error, {body} = {}) => { // also since we are only  using the property 'body' of the object 'response' so we could just destructure that
